@@ -34,16 +34,37 @@ class _HomePageState extends State<HomePage> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
               ),
-              height: MediaQuery.of(context).size.height *
-                  0.15, // todo change to 9%
+              height: MediaQuery.of(context).size.height * 0.092,
               width: MediaQuery.of(context).size.width * 0.85,
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextField(
-                    controller: _cityTextController,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.65,
+                      child: TextField(
+                          controller: _cityTextController,
+                          decoration: const InputDecoration(
+                            hintText: 'Start typing for search',
+                            border: InputBorder.none,
+
+                          )),
+                    ),
                   ),
-                  ElevatedButton(onPressed: _search, child: Text('Search'))
+                  Container(
+                      margin: EdgeInsets.only(right: 8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xff90CAF9),
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: IconButton(
+                        onPressed: _search,
+                        icon: Icon(Icons.search),
+                        color: Colors.white,
+                      ))
                 ],
               ),
             ),
@@ -68,8 +89,7 @@ class _HomePageState extends State<HomePage> {
                               width: MediaQuery.of(context).size.width * 0.26,
                               height: MediaQuery.of(context).size.height * 0.15,
                               child: Image.network(_response!.iconUrl),
-                              decoration: BoxDecoration(color:
-                              Colors.white),
+                              decoration: BoxDecoration(color: Colors.white),
                             ),
                             Column(
                               children: [
