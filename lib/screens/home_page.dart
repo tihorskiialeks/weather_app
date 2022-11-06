@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+
 import '../helpers/data_service.dart';
 import '../helpers/weather_response.dart';
 import '../widgets/question_container.dart';
 import '../widgets/popular_city.dart';
 
-
-
-
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,14 +20,10 @@ class _HomePageState extends State<HomePage> {
   WeatherResponse? _response;
   late ScrollController _scrollController;
   bool expanded = false;
-  bool expanded1 = false;
-  bool expanded2 = false;
-  bool expanded3 = false;
 
   @override
   void initState() {
     _scrollController = ScrollController()..addListener(() {});
-
     super.initState();
   }
 
@@ -38,10 +32,6 @@ class _HomePageState extends State<HomePage> {
     _scrollController.dispose(); // dispose the controller
     super.dispose();
   }
-
-//  List<String> cities = ['kyiv', 'odessa', 'lviv', 'moscow'];
-//  late ValueChanged<String> onChanged;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,38 +77,19 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(right: 8),
+                          margin: const EdgeInsets.only(right: 8),
                           decoration: BoxDecoration(
                             color: const Color(0xff90CAF9),
                             borderRadius: BorderRadius.circular(40),
                           ),
                           child: IconButton(
                             onPressed: _search,
-                            icon: Icon(Icons.search),
+                            icon: const Icon(Icons.search),
                             color: Colors.white,
                           ))
                     ],
                   ),
                 ),
-                // Column(
-                //   children: [
-                //     //buildSearch(),
-                //     Container(
-                //       decoration: BoxDecoration(
-                //         color: Colors.white,
-                //         borderRadius: BorderRadius.circular(40),
-                //       ),
-                //       height: MediaQuery.of(context).size.height * 0.092,
-                //       width: MediaQuery.of(context).size.width * 0.85,
-                //       child: ListView.builder(
-                //           itemCount: cities.length,
-                //           itemBuilder: (context, index) {
-                //             final city = cities[index];
-                //             return buildCIty(city);
-                //           }),
-                //     ),
-                //   ],
-                // ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.09,
                   width: double.infinity,
@@ -143,11 +114,11 @@ class _HomePageState extends State<HomePage> {
                                         0.26,
                                     height: MediaQuery.of(context).size.height *
                                         0.13,
-                                    child: Image.network(_response!.iconUrl),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
                                             BorderRadius.circular(40)),
+                                    child: Image.network(_response!.iconUrl),
                                   ),
                                 ),
                                 Column(
@@ -165,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 8),
                                       child: Text(
-                                        '${_response!.weatherInfo.main}',
+                                        _response!.weatherInfo.main,
                                         style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400,
@@ -173,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     Text(
-                                        '${_response!.weatherInfo.description}',
+                                        _response!.weatherInfo.description,
                                         style: const TextStyle(
                                           fontSize: 16,
                                           color: Color(0xff9E9E9E),
@@ -287,29 +258,37 @@ class _HomePageState extends State<HomePage> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () => _searchByName('New York'),
-                  child: PopularCity(cityName: 'New York', imageAsset: 'assets/images/new_york.png',)
-                ),
+                    onTap: () => _searchByName('New York'),
+                    child: PopularCity(
+                      cityName: 'New York',
+                      imageAsset: 'assets/images/new_york.png',
+                    )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () => _searchByName('London'),
-                  child: PopularCity(cityName: 'London', imageAsset: 'assets/images/london.png',)
-                ),
+                    onTap: () => _searchByName('London'),
+                    child: PopularCity(
+                      cityName: 'London',
+                      imageAsset: 'assets/images/london.png',
+                    )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
                   onTap: () => _searchByName('Dubai'),
-                  child: PopularCity(cityName: 'Dubai', imageAsset: 'assets/images/dubai.png',),
+                  child: PopularCity(
+                    cityName: 'Dubai',
+                    imageAsset: 'assets/images/dubai.png',
+                  ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
                   onTap: () => _searchByName('Paris'),
-                  child: PopularCity(cityName: 'Paris', imageAsset: 'assets/images/paris.png'),
+                  child: PopularCity(
+                      cityName: 'Paris', imageAsset: 'assets/images/paris.png'),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0),
@@ -325,24 +304,24 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 QuestionContainer(expanded: expanded, question: 'Question 1'),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-               QuestionContainer(expanded: expanded, question: 'Question 2'),
-                SizedBox(
+                QuestionContainer(expanded: expanded, question: 'Question 2'),
+                const SizedBox(
                   height: 10,
                 ),
                 QuestionContainer(expanded: expanded, question: 'Question 3'),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 QuestionContainer(
-                  expanded: expanded3,
+                  expanded: expanded,
                   question: 'Question 4',
                 ),
-                Padding(
+                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: Text('Tykhorskyi Oleksandr, 2022'),
+                  child: Text('Tykhorskyi ${DateFormat('yyyy').format(DateTime.now())}'),
                 )
               ],
             ),
@@ -355,11 +334,13 @@ class _HomePageState extends State<HomePage> {
   void _search() async {
     final response = await _dataService.getWeather(_cityTextController.text);
     setState(() => _response = response);
+
   }
 
   void _searchByName(String cityName) async {
     final response = await _dataService.getWeather(cityName);
     setState(() => _response = response);
+    _cityTextController.text=cityName;
     _scrollToTop();
   }
 
@@ -368,27 +349,4 @@ class _HomePageState extends State<HomePage> {
         duration: const Duration(seconds: 1), curve: Curves.linear);
   }
 
-// void searchCity(String query){
-//   final findedCities = cities.where((city) {
-//     final cityLower = city.toLowerCase();
-//     final searchLower = query.toLowerCase();
-//     return cityLower.contains(searchLower);
-//   }).toList();
-//   setState(() {
-//
-//     this.cities = findedCities;
-//   });
-// }
-//
-//
-//
-// Widget buildCIty(String cityName) => Card(
-//   margin: EdgeInsets.all( 12),
-//   child: Text(cityName),
-//
-//     );
 }
-
-
-
-

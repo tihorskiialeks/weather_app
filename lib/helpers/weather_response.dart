@@ -1,25 +1,4 @@
-import 'package:http/http.dart' as http;
 
-/*
-* {
-
-  "weather": [
-    {
-      "main": "Rain",
-      "description": "moderate rain",
-      "icon": "10d"
-    }
-  ],
-  "main": {
-    "temp": 298.48,
-    "temp_min": 297.56,
-    "temp_max": 300.05,
-  },
-  "sys": {
-    "country": "IT",
-  },
-  "name": "Zocca",
-}      */
 class WeatherResponse {
   final String cityName;
   final TemperatureInfo tempInfo;
