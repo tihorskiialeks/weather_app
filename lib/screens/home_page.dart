@@ -17,6 +17,22 @@ class _HomePageState extends State<HomePage> {
   final _cityTextController = TextEditingController();
   final _dataService = DataService();
   WeatherResponse? _response;
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+      });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose(); // dispose the controller
+    super.dispose();
+  }
 
 //  List<String> cities = ['kyiv', 'odessa', 'lviv', 'moscow'];
 //  late ValueChanged<String> onChanged;
@@ -25,6 +41,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        controller: _scrollController,
         children: [
           Container(
             padding: EdgeInsets.zero,
@@ -441,6 +458,12 @@ class _HomePageState extends State<HomePage> {
   void _searchByName(String cityName) async {
     final response = await _dataService.getWeather(cityName);
     setState(() => _response = response);
+    _scrollToTop();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.linear);
   }
 
 // void searchCity(String query){
