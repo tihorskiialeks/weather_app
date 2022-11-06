@@ -258,14 +258,14 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             padding: EdgeInsets.zero,
-            height: MediaQuery.of(context).size.height*1.5,
+            height: MediaQuery.of(context).size.height * 1.5,
             child: Column(
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () =>_searchByName('New York'),
+                  onTap: () => _searchByName('New York'),
                   child: Container(
                     decoration: BoxDecoration(
                       image: const DecorationImage(
@@ -275,13 +275,38 @@ class _HomePageState extends State<HomePage> {
                     ),
                     height: MediaQuery.of(context).size.height * 0.32,
                     width: MediaQuery.of(context).size.width * 0.85,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            height: MediaQuery.of(context).size.height * 0.053,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'New York',
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () =>_searchByName('London'),
+                  onTap: () => _searchByName('London'),
                   child: Container(
                     decoration: BoxDecoration(
                       image: const DecorationImage(
@@ -291,13 +316,38 @@ class _HomePageState extends State<HomePage> {
                     ),
                     height: MediaQuery.of(context).size.height * 0.32,
                     width: MediaQuery.of(context).size.width * 0.85,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            height: MediaQuery.of(context).size.height * 0.053,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'London',
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () =>_searchByName('Dubai'),
+                  onTap: () => _searchByName('Dubai'),
                   child: Container(
                     decoration: BoxDecoration(
                       image: const DecorationImage(
@@ -307,13 +357,38 @@ class _HomePageState extends State<HomePage> {
                     ),
                     height: MediaQuery.of(context).size.height * 0.32,
                     width: MediaQuery.of(context).size.width * 0.85,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            height: MediaQuery.of(context).size.height * 0.053,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'Dubai',
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () =>_searchByName('Paris'),
+                  onTap: () => _searchByName('Paris'),
                   child: Container(
                     decoration: BoxDecoration(
                       image: const DecorationImage(
@@ -323,6 +398,31 @@ class _HomePageState extends State<HomePage> {
                     ),
                     height: MediaQuery.of(context).size.height * 0.32,
                     width: MediaQuery.of(context).size.width * 0.85,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            height: MediaQuery.of(context).size.height * 0.053,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(40)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'Paris',
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -337,6 +437,7 @@ class _HomePageState extends State<HomePage> {
     final response = await _dataService.getWeather(_cityTextController.text);
     setState(() => _response = response);
   }
+
   void _searchByName(String cityName) async {
     final response = await _dataService.getWeather(cityName);
     setState(() => _response = response);
