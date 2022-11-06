@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../helpers/data_service.dart';
 import '../helpers/weather_response.dart';
 import '../widgets/question_container.dart';
+import '../widgets/popular_city.dart';
 
 
 
@@ -287,164 +288,28 @@ class _HomePageState extends State<HomePage> {
                 ),
                 InkWell(
                   onTap: () => _searchByName('New York'),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage('assets/images/new_york.png'),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    height: MediaQuery.of(context).size.height * 0.32,
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            height: MediaQuery.of(context).size.height * 0.053,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'New York',
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: PopularCity(cityName: 'New York', imageAsset: 'assets/images/new_york.png',)
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
                   onTap: () => _searchByName('London'),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage('assets/images/london.png'),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    height: MediaQuery.of(context).size.height * 0.32,
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            height: MediaQuery.of(context).size.height * 0.053,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'London',
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: PopularCity(cityName: 'London', imageAsset: 'assets/images/london.png',)
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
                   onTap: () => _searchByName('Dubai'),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage('assets/images/dubai.png'),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    height: MediaQuery.of(context).size.height * 0.32,
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            height: MediaQuery.of(context).size.height * 0.053,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'Dubai',
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: PopularCity(cityName: 'Dubai', imageAsset: 'assets/images/dubai.png',),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
                   onTap: () => _searchByName('Paris'),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage('assets/images/paris.png'),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    height: MediaQuery.of(context).size.height * 0.32,
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            height: MediaQuery.of(context).size.height * 0.053,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'Paris',
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: PopularCity(cityName: 'Paris', imageAsset: 'assets/images/paris.png'),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0),
@@ -523,5 +388,7 @@ class _HomePageState extends State<HomePage> {
 //
 //     );
 }
+
+
 
 

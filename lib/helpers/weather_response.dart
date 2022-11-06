@@ -59,9 +59,9 @@ class WeatherResponse {
 }
 
 class TemperatureInfo {
-  final double temperature;
-  final double minTemp;
-  final double maxTemp;
+  final num temperature;
+  final num minTemp;
+  final num maxTemp;
 
   TemperatureInfo({
     required this.temperature,
