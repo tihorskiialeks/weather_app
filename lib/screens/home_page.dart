@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/helpers/data_service.dart';
-import 'package:weather_app/helpers/weather_response.dart';
 import 'package:intl/intl.dart';
 
-import '../widgets/user_input.dart';
-import '../widgets/weather_output.dart';
+import '../helpers/data_service.dart';
+import '../helpers/weather_response.dart';
+import '../widgets/question_container.dart';
+
+
+
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -18,12 +20,14 @@ class _HomePageState extends State<HomePage> {
   final _dataService = DataService();
   WeatherResponse? _response;
   late ScrollController _scrollController;
+  bool expanded = false;
+  bool expanded1 = false;
+  bool expanded2 = false;
+  bool expanded3 = false;
 
   @override
   void initState() {
-    _scrollController = ScrollController()
-      ..addListener(() {
-      });
+    _scrollController = ScrollController()..addListener(() {});
 
     super.initState();
   }
@@ -275,7 +279,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             padding: EdgeInsets.zero,
-            height: MediaQuery.of(context).size.height * 1.5,
+            height: MediaQuery.of(context).size.height * 3,
             child: Column(
               children: [
                 SizedBox(
@@ -442,6 +446,39 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.09,
+                    child: const Text(
+                      'Frequently Asked Questions',
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                QuestionContainer(expanded: expanded, question: 'Question 1'),
+                SizedBox(
+                  height: 10,
+                ),
+               QuestionContainer(expanded: expanded, question: 'Question 2'),
+                SizedBox(
+                  height: 10,
+                ),
+                QuestionContainer(expanded: expanded, question: 'Question 3'),
+                SizedBox(
+                  height: 10,
+                ),
+                QuestionContainer(
+                  expanded: expanded3,
+                  question: 'Question 4',
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30.0),
+                  child: Text('Tykhorskyi Oleksandr, 2022'),
+                )
               ],
             ),
           ),
@@ -486,3 +523,5 @@ class _HomePageState extends State<HomePage> {
 //
 //     );
 }
+
+
