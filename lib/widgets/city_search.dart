@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../data/all_cities.dart';
 
 class CitySearch extends StatefulWidget {
   String query;
   Function(String city) cityCallback;
 
-  CitySearch({Key? key, required this.query, required this.cityCallback})
-      : super(key: key);
+  CitySearch({Key? key, required this.query, required this.cityCallback}) : super(key: key);
 
   @override
   State<CitySearch> createState() => _CitySearchState();
@@ -91,8 +91,7 @@ class _CitySearchState extends State<CitySearch> {
         .where((city) => city.toLowerCase().contains(query.toLowerCase()))
         .toList();
     setState(() {
-      this.widget.query = query;
-      //cities = selectedCities;
+      widget.query = query;
     });
   }
 
