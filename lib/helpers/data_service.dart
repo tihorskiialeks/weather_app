@@ -12,7 +12,6 @@ class DataService {
     final uri = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$API&units=metric');
     final response = await http.get(uri);
-    print(response.body);
     final json = jsonDecode(response.body);
     return WeatherResponse.fromJson(json);
   }
