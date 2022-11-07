@@ -20,6 +20,10 @@ class _HomePageState extends State<HomePage> {
   WeatherResponse? _response;
   late ScrollController _scrollController;
   bool expanded = false;
+<<<<<<< Updated upstream
+=======
+  String query = '';
+>>>>>>> Stashed changes
 
   @override
   void initState() {
@@ -29,7 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    _scrollController.dispose(); // dispose the controller
+    _scrollController.dispose();
     super.dispose();
   }
   @override
@@ -68,6 +72,13 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 18,
                               ),
                               controller: _cityTextController,
+<<<<<<< Updated upstream
+=======
+                              onChanged: (value) => setState(() {
+                                    query = value;
+                                    rebuildAllChildren(context);
+                                  }),
+>>>>>>> Stashed changes
                               // onChanged: searchCity,
                               decoration: const InputDecoration(
                                 hintText: 'Start typing for search',
@@ -91,6 +102,23 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
+<<<<<<< Updated upstream
+=======
+                  height: query.isEmpty
+                      ? 0
+                      : MediaQuery.of(context).size.height * 0.09,
+                  width: double.infinity,
+                ),
+                CitySearch(
+                    query: query,
+                    cityCallback: (city) {
+                      setState(() {
+                        _cityTextController.text = city;
+                        _searchByName(_cityTextController.text);
+                      });
+                    }),
+                SizedBox(
+>>>>>>> Stashed changes
                   height: MediaQuery.of(context).size.height * 0.09,
                   width: double.infinity,
                 ),
@@ -291,10 +319,10 @@ class _HomePageState extends State<HomePage> {
                       cityName: 'Paris', imageAsset: 'assets/images/paris.png'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
+                  padding: const EdgeInsets.only(top: 50.0, bottom: 20),
                   child: SizedBox(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.09,
+                    height: MediaQuery.of(context).size.height * 0.11,
                     child: const Text(
                       'Frequently Asked Questions',
                       style:
