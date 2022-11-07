@@ -79,6 +79,7 @@ class _CitySearchState extends State<CitySearch> {
                 borderRadius: BorderRadius.circular(40),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [Text(city)],
               ),
             ),
