@@ -18,7 +18,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       height: widget.expanded
           ? MediaQuery.of(context).size.height * 0.4
           : MediaQuery.of(context).size.height * 0.09,
@@ -28,7 +28,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
             ? MediaQuery.of(context).size.height * 0.3
             : MediaQuery.of(context).size.height * 0.09,
         decoration: BoxDecoration(
-          color: Color(0xffececec),
+          color: const Color(0xffececec),
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -38,10 +38,10 @@ class _QuestionContainerState extends State<QuestionContainer> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   child: Text(
                     widget.question,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -59,8 +59,8 @@ class _QuestionContainerState extends State<QuestionContainer> {
             ),
             SingleChildScrollView(
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+                duration: const Duration(milliseconds: 300),
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
                 height: widget.expanded
                     ? MediaQuery.of(context).size.height * 0.24
                     : 0,
