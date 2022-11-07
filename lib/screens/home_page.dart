@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:weather_app/widgets/city_search.dart';
 
 import '../helpers/data_service.dart';
 import '../helpers/weather_response.dart';
@@ -15,11 +15,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _cityTextController = TextEditingController();
+  var _cityTextController = TextEditingController();
   final _dataService = DataService();
   WeatherResponse? _response;
   late ScrollController _scrollController;
   bool expanded = false;
+  String query = '';
+
+
+  set cityTextController(value) {
+    _cityTextController = value;
+  }
 
   @override
   void initState() {
@@ -32,8 +38,10 @@ class _HomePageState extends State<HomePage> {
     _scrollController.dispose(); // dispose the controller
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
+    rebuildAllChildren(context);
     return Scaffold(
       body: ListView(
         controller: _scrollController,
@@ -68,6 +76,11 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 18,
                               ),
                               controller: _cityTextController,
+                              onChanged: (value) => setState(() {
+                                    query = value;
+                                    rebuildAllChildren(context);
+                                    print(query);
+                                  }),
                               // onChanged: searchCity,
                               decoration: const InputDecoration(
                                 hintText: 'Start typing for search',
@@ -90,6 +103,18 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: query.length < 1
+                      ? 0
+                      : MediaQuery.of(context).size.height * 0.09,
+                  width: double.infinity,
+                ),
+                CitySearch(query: query, cityCallback: (city){
+                  setState(() {
+                    _cityTextController.text=city;
+                    _searchByName( _cityTextController.text);
+                  });
+                }),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.09,
                   width: double.infinity,
@@ -143,8 +168,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                    Text(
-                                        _response!.weatherInfo.description,
+                                    Text(_response!.weatherInfo.description,
                                         style: const TextStyle(
                                           fontSize: 16,
                                           color: Color(0xff9E9E9E),
@@ -319,9 +343,10 @@ class _HomePageState extends State<HomePage> {
                   expanded: expanded,
                   question: 'Question 4',
                 ),
-                 Padding(
+                Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: Text('Tykhorskyi ${DateFormat('yyyy').format(DateTime.now())}'),
+                  child: Text(
+                      'Tykhorskyi ${DateFormat('yyyy').format(DateTime.now())}'),
                 )
               ],
             ),
@@ -334,14 +359,16 @@ class _HomePageState extends State<HomePage> {
   void _search() async {
     final response = await _dataService.getWeather(_cityTextController.text);
     setState(() => _response = response);
-
+    query = '';
   }
 
   void _searchByName(String cityName) async {
     final response = await _dataService.getWeather(cityName);
     setState(() => _response = response);
-    _cityTextController.text=cityName;
+    _cityTextController.text = cityName;
+    query = '';
     _scrollToTop();
+
   }
 
   void _scrollToTop() {
@@ -349,4 +376,12 @@ class _HomePageState extends State<HomePage> {
         duration: const Duration(seconds: 1), curve: Curves.linear);
   }
 
+  void rebuildAllChildren(BuildContext context) {
+    void rebuild(Element el) {
+      el.markNeedsBuild();
+      el.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
+  }
 }
