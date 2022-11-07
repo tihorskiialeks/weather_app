@@ -36,7 +36,7 @@ class PopularCity extends StatelessWidget {
                 children:  [
                   Text(
                     cityName,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     textAlign: TextAlign.center,
                   )
                 ],
