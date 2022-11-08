@@ -5,6 +5,7 @@ import 'package:weather_app/widgets/city_search.dart';
 import '../helpers/data_service.dart';
 import '../helpers/weather_response.dart';
 import '../strings/strings.dart';
+import '../strings/image_assets_strings.dart';
 import '../widgets/question_container.dart';
 import '../widgets/popular_city.dart';
 
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/background.jpg'),
+                  image: AssetImage(ImageAssetsStrings.backgroundImage),
                   fit: BoxFit.cover),
             ),
             child: Column(
@@ -279,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () => _searchByName(Strings.newYork),
                     child: PopularCity(
                       cityName: Strings.newYork,
-                      imageAsset: 'assets/images/new_york.png',
+                      imageAsset: ImageAssetsStrings.newYorkImage,
                     )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
@@ -288,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () => _searchByName(Strings.london),
                     child: PopularCity(
                       cityName: Strings.london,
-                      imageAsset: 'assets/images/london.png',
+                      imageAsset: ImageAssetsStrings.londonImage,
                     )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
@@ -297,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () => _searchByName(Strings.dubai),
                   child: PopularCity(
                     cityName: Strings.dubai,
-                    imageAsset: 'assets/images/dubai.png',
+                    imageAsset: ImageAssetsStrings.dubaiImage,
                   ),
                 ),
                 SizedBox(
@@ -306,7 +307,7 @@ class _HomePageState extends State<HomePage> {
                 InkWell(
                   onTap: () => _searchByName(Strings.paris),
                   child: PopularCity(
-                      cityName: Strings.paris, imageAsset: 'assets/images/paris.png'),
+                      cityName: Strings.paris, imageAsset: ImageAssetsStrings.parisImage),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0),

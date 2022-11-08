@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../strings/strings.dart';
 
 class QuestionContainer extends StatefulWidget {
   QuestionContainer({
@@ -65,12 +66,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                     ? MediaQuery.of(context).size.height * 0.24
                     : 0,
                 child: const Text(
-                  'But I must explain to you how all this mistaken idea '
-                  'of denouncing pleasure and praising pain was born and I will give you a complete '
-                  'account of the system, and expound the actual teachings of the great explorer of the truth, '
-                  'the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, '
-                  'because it is pleasure, but because those who do not know how to pursue pleasure rationally '
-                  'encounter consequences that are extremely painful.',
+                  Strings.answer,
                   style: TextStyle(
                     fontSize: 14,
                   ),
