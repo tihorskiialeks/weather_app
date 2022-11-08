@@ -268,83 +268,80 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
             ),
           ),
-          Container(
-            padding: EdgeInsets.zero,
-            height: MediaQuery.of(context).size.height * 3,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                InkWell(
-                    onTap: () => _searchByName(Strings.newYork),
-                    child: PopularCity(
-                      cityName: Strings.newYork,
-                      imageAsset: ImageAssetsStrings.newYorkImage,
-                    )),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                InkWell(
-                    onTap: () => _searchByName(Strings.london),
-                    child: PopularCity(
-                      cityName: Strings.london,
-                      imageAsset: ImageAssetsStrings.londonImage,
-                    )),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                InkWell(
-                  onTap: () => _searchByName(Strings.dubai),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              InkWell(
+                  onTap: () => _searchByName(Strings.newYork),
                   child: PopularCity(
-                    cityName: Strings.dubai,
-                    imageAsset: ImageAssetsStrings.dubaiImage,
+                    cityName: Strings.newYork,
+                    imageAsset: ImageAssetsStrings.newYorkImage,
+                  )),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              InkWell(
+                  onTap: () => _searchByName(Strings.london),
+                  child: PopularCity(
+                    cityName: Strings.london,
+                    imageAsset: ImageAssetsStrings.londonImage,
+                  )),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              InkWell(
+                onTap: () => _searchByName(Strings.dubai),
+                child: PopularCity(
+                  cityName: Strings.dubai,
+                  imageAsset: ImageAssetsStrings.dubaiImage,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              InkWell(
+                onTap: () => _searchByName(Strings.paris),
+                child: PopularCity(
+                    cityName: Strings.paris, imageAsset: ImageAssetsStrings.parisImage),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 50.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.09,
+                  child: const Text(
+                    Strings.heading2,
+                    style:
+                        TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                InkWell(
-                  onTap: () => _searchByName(Strings.paris),
-                  child: PopularCity(
-                      cityName: Strings.paris, imageAsset: ImageAssetsStrings.parisImage),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.09,
-                    child: const Text(
-                      Strings.heading2,
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                QuestionContainer(expanded: expanded, question: '${Strings.question} 1'),
-                const SizedBox(
-                  height: 10,
-                ),
-                QuestionContainer(expanded: expanded, question: '${Strings.question} 2'),
-                const SizedBox(
-                  height: 10,
-                ),
-                QuestionContainer(expanded: expanded, question: '${Strings.question} 3'),
-                const SizedBox(
-                  height: 10,
-                ),
-                QuestionContainer(
-                  expanded: expanded,
-                  question: '${Strings.question} 4',
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: Text(
-                      '${Strings.authorName} ${DateFormat(Strings.year).format(DateTime.now())}'),
-                )
-              ],
-            ),
+              ),
+              QuestionContainer(expanded: expanded, question: '${Strings.question} 1'),
+              const SizedBox(
+                height: 10,
+              ),
+              QuestionContainer(expanded: expanded, question: '${Strings.question} 2'),
+              const SizedBox(
+                height: 10,
+              ),
+              QuestionContainer(expanded: expanded, question: '${Strings.question} 3'),
+              const SizedBox(
+                height: 10,
+              ),
+              QuestionContainer(
+                expanded: expanded,
+                question: '${Strings.question} 4',
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30.0),
+                child: Text(
+                    '${Strings.authorName} ${DateFormat(Strings.year).format(DateTime.now())}'),
+              )
+            ],
           ),
         ],
       ),
