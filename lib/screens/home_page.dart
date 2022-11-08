@@ -4,6 +4,7 @@ import 'package:weather_app/widgets/city_search.dart';
 
 import '../helpers/data_service.dart';
 import '../helpers/weather_response.dart';
+import '../strings/strings.dart';
 import '../widgets/question_container.dart';
 import '../widgets/popular_city.dart';
 
@@ -76,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                                     rebuildAllChildren(context);
                                   }),
                               decoration: const InputDecoration(
-                                hintText: 'Start typing for search',
+                                hintText: Strings.searchHintText,
                                 hintStyle: TextStyle(fontSize: 18),
                                 border: InputBorder.none,
                               )),
@@ -189,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                                   Padding(
                                     padding: const EdgeInsets.only(right: 20.0),
                                     child: Text(
-                                      DateFormat('dd MMMM yyyy')
+                                      DateFormat(Strings.dateFormat)
                                           .format(DateTime.now()),
                                       style: const TextStyle(
                                         fontSize: 16,
@@ -209,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                 Column(
                                   children: [
                                     const Text(
-                                      'Min',
+                                      Strings.minTemp,
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Color(0xff9E9E9E),
@@ -230,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Column(children: [
                                   const Text(
-                                    'Max',
+                                    Strings.maxTemp,
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Color(0xff9E9E9E),
@@ -261,7 +262,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             width: double.infinity,
             child: Text(
-              'Check the weather in most popular cities in the world',
+              Strings.heading1,
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
               textAlign: TextAlign.center,
             ),
@@ -275,27 +276,27 @@ class _HomePageState extends State<HomePage> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                    onTap: () => _searchByName('New York'),
+                    onTap: () => _searchByName(Strings.newYork),
                     child: PopularCity(
-                      cityName: 'New York',
+                      cityName: Strings.newYork,
                       imageAsset: 'assets/images/new_york.png',
                     )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                    onTap: () => _searchByName('London'),
+                    onTap: () => _searchByName(Strings.london),
                     child: PopularCity(
-                      cityName: 'London',
+                      cityName: Strings.london,
                       imageAsset: 'assets/images/london.png',
                     )),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () => _searchByName('Dubai'),
+                  onTap: () => _searchByName(Strings.dubai),
                   child: PopularCity(
-                    cityName: 'Dubai',
+                    cityName: Strings.dubai,
                     imageAsset: 'assets/images/dubai.png',
                   ),
                 ),
@@ -303,9 +304,9 @@ class _HomePageState extends State<HomePage> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 InkWell(
-                  onTap: () => _searchByName('Paris'),
+                  onTap: () => _searchByName(Strings.paris),
                   child: PopularCity(
-                      cityName: 'Paris', imageAsset: 'assets/images/paris.png'),
+                      cityName: Strings.paris, imageAsset: 'assets/images/paris.png'),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0),
@@ -313,33 +314,33 @@ class _HomePageState extends State<HomePage> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * 0.09,
                     child: const Text(
-                      'Frequently Asked Questions',
+                      Strings.heading2,
                       style:
                           TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                QuestionContainer(expanded: expanded, question: 'Question 1'),
+                QuestionContainer(expanded: expanded, question: '${Strings.question} 1'),
                 const SizedBox(
                   height: 10,
                 ),
-                QuestionContainer(expanded: expanded, question: 'Question 2'),
+                QuestionContainer(expanded: expanded, question: '${Strings.question} 2'),
                 const SizedBox(
                   height: 10,
                 ),
-                QuestionContainer(expanded: expanded, question: 'Question 3'),
+                QuestionContainer(expanded: expanded, question: '${Strings.question} 3'),
                 const SizedBox(
                   height: 10,
                 ),
                 QuestionContainer(
                   expanded: expanded,
-                  question: 'Question 4',
+                  question: '${Strings.question} 4',
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30.0),
                   child: Text(
-                      'Tykhorskyi ${DateFormat('yyyy').format(DateTime.now())}'),
+                      '${Strings.authorName} ${DateFormat(Strings.year).format(DateTime.now())}'),
                 )
               ],
             ),

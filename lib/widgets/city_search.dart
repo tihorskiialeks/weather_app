@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../strings/strings.dart';
 import '../data/all_cities.dart';
 
 class CitySearch extends StatefulWidget {
@@ -53,7 +54,7 @@ class _CitySearchState extends State<CitySearch> {
                 child: Column(
                   children: const [
                     Text(
-                      'City not found, please try to change your search query',
+                      Strings.notFound,
                       textAlign: TextAlign.center,
                       style: (TextStyle(color: Color(0xff9E9E9E))),
                     ),
