@@ -66,27 +66,16 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.65,
-                          child: TextField(
-                              style: const TextStyle(
-                                fontSize: 18,
-                              ),
-                              controller: _cityTextController,
-                              onChanged: (value) => setState(() {
-                                    query = value;
-                                    rebuildAllChildren(context);
-                                  }),
-                              decoration: const InputDecoration(
-                                hintText: Strings.searchHintText,
-                                hintStyle: TextStyle(fontSize: 18),
-                                border: InputBorder.none,
-                              )),
-                        ),
+                      UserInput(
+                        cityTextController: _cityTextController,
+                        userInputQuery: (value) => setState(() {
+                          query = value;
+                          rebuildAllChildren(context);
+                        }),
                       ),
-                      SearchButton(searchCallback: _search,),
+                      SearchButton(
+                        searchCallback: _search,
+                      ),
                     ],
                   ),
                 ),
@@ -257,7 +246,9 @@ class _HomePageState extends State<HomePage> {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              PopularCitiesPage(cityCallback: (city) => _searchByName(city),),
+              PopularCitiesPage(
+                cityCallback: (city) => _searchByName(city),
+              ),
               FrequentlyAskedQuestions(expanded: expanded),
             ],
           ),
@@ -295,6 +286,36 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+class UserInput extends StatelessWidget {
+  Function(String city) userInputQuery;
 
+   UserInput({
+    Key? key,
+    required TextEditingController cityTextController,
+    required this.userInputQuery,
+  })  : _cityTextController = cityTextController,
+        super(key: key);
 
+  final TextEditingController _cityTextController;
 
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.65,
+        child: TextField(
+            style: const TextStyle(
+              fontSize: 18,
+            ),
+            controller: _cityTextController,
+            onChanged: (value) => userInputQuery(value),
+            decoration: const InputDecoration(
+              hintText: Strings.searchHintText,
+              hintStyle: TextStyle(fontSize: 18),
+              border: InputBorder.none,
+            )),
+      ),
+    );
+  }
+}
