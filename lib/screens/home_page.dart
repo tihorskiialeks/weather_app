@@ -9,6 +9,7 @@ import '../strings/image_assets_strings.dart';
 
 import '../widgets/popular_cities_page.dart';
 import '../widgets/frequently_asked_questions.dart';
+import '../widgets/search_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -85,17 +86,7 @@ class _HomePageState extends State<HomePage> {
                               )),
                         ),
                       ),
-                      Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          decoration: BoxDecoration(
-                            color: const Color(0xff90CAF9),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: IconButton(
-                            onPressed: _search,
-                            icon: const Icon(Icons.search),
-                            color: Colors.white,
-                          ))
+                      SearchButton(searchCallback: _search,),
                     ],
                   ),
                 ),
@@ -303,5 +294,7 @@ class _HomePageState extends State<HomePage> {
     (context as Element).visitChildren(rebuild);
   }
 }
+
+
 
 
