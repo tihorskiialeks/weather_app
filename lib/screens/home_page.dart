@@ -7,7 +7,7 @@ import '../helpers/weather_response.dart';
 import '../strings/strings.dart';
 import '../strings/image_assets_strings.dart';
 
-import '../widgets/popular_city.dart';
+import '../widgets/popular_cities_page.dart';
 import '../widgets/frequently_asked_questions.dart';
 
 class HomePage extends StatefulWidget {
@@ -263,54 +263,10 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          const SizedBox(
-            width: double.infinity,
-            child: Text(
-              Strings.heading1,
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
-              textAlign: TextAlign.center,
-            ),
-          ),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              InkWell(
-                  onTap: () => _searchByName(Strings.newYork),
-                  child: PopularCity(
-                    cityName: Strings.newYork,
-                    imageAsset: ImageAssetsStrings.newYorkImage,
-                  )),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              InkWell(
-                  onTap: () => _searchByName(Strings.london),
-                  child: PopularCity(
-                    cityName: Strings.london,
-                    imageAsset: ImageAssetsStrings.londonImage,
-                  )),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              InkWell(
-                onTap: () => _searchByName(Strings.dubai),
-                child: PopularCity(
-                  cityName: Strings.dubai,
-                  imageAsset: ImageAssetsStrings.dubaiImage,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              InkWell(
-                onTap: () => _searchByName(Strings.paris),
-                child: PopularCity(
-                    cityName: Strings.paris,
-                    imageAsset: ImageAssetsStrings.parisImage),
-              ),
+              PopularCitiesPage(cityCallback: (city) => _searchByName(city),),
               FrequentlyAskedQuestions(expanded: expanded),
             ],
           ),
