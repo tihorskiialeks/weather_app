@@ -6,8 +6,9 @@ import '../helpers/data_service.dart';
 import '../helpers/weather_response.dart';
 import '../strings/strings.dart';
 import '../strings/image_assets_strings.dart';
-import '../widgets/question_container.dart';
+
 import '../widgets/popular_city.dart';
+import '../widgets/frequently_asked_questions.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -104,12 +105,14 @@ class _HomePageState extends State<HomePage> {
                       : MediaQuery.of(context).size.height * 0.09,
                   width: double.infinity,
                 ),
-                CitySearch(query: query, cityCallback: (city){
-                  setState(() {
-                    _cityTextController.text=city;
-                    _searchByName( _cityTextController.text);
-                  });
-                }),
+                CitySearch(
+                    query: query,
+                    cityCallback: (city) {
+                      setState(() {
+                        _cityTextController.text = city;
+                        _searchByName(_cityTextController.text);
+                      });
+                    }),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.09,
                   width: double.infinity,
@@ -305,42 +308,10 @@ class _HomePageState extends State<HomePage> {
               InkWell(
                 onTap: () => _searchByName(Strings.paris),
                 child: PopularCity(
-                    cityName: Strings.paris, imageAsset: ImageAssetsStrings.parisImage),
+                    cityName: Strings.paris,
+                    imageAsset: ImageAssetsStrings.parisImage),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 50.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.09,
-                  child: const Text(
-                    Strings.heading2,
-                    style:
-                        TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              QuestionContainer(expanded: expanded, question: '${Strings.question} 1'),
-              const SizedBox(
-                height: 10,
-              ),
-              QuestionContainer(expanded: expanded, question: '${Strings.question} 2'),
-              const SizedBox(
-                height: 10,
-              ),
-              QuestionContainer(expanded: expanded, question: '${Strings.question} 3'),
-              const SizedBox(
-                height: 10,
-              ),
-              QuestionContainer(
-                expanded: expanded,
-                question: '${Strings.question} 4',
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30.0),
-                child: Text(
-                    '${Strings.authorName} ${DateFormat(Strings.year).format(DateTime.now())}'),
-              )
+              FrequentlyAskedQuestions(expanded: expanded),
             ],
           ),
         ],
@@ -360,7 +331,6 @@ class _HomePageState extends State<HomePage> {
     _cityTextController.text = cityName;
     query = '';
     _scrollToTop();
-
   }
 
   void _scrollToTop() {
@@ -373,6 +343,9 @@ class _HomePageState extends State<HomePage> {
       el.markNeedsBuild();
       el.visitChildren(rebuild);
     }
+
     (context as Element).visitChildren(rebuild);
   }
 }
+
+
